@@ -7,6 +7,9 @@
 ![Version](https://img.shields.io/github/v/release/ramanbanka/ferry-releases?color=green&label=version)
 ![Free](https://img.shields.io/badge/price-free-brightgreen)
 
+**[ramanbanka.github.io/ferry](https://ramanbanka.github.io/ferry/)** — what it does, how
+it compares, and how to install it.
+
 Plug an Android phone into your Mac with a USB cable and it appears in Finder as a
 volume. Drag files in and out, open photos, play videos, edit a document in place.
 A memory card shows up as its own volume next to it.
@@ -44,14 +47,14 @@ phone, it appears; unplug it, it goes away.
 
 | | **Ferry** | **Android File Transfer** | **OpenMTP** | **MacDroid** |
 |---|---|---|---|---|
-| **Cost** | Free | Free | Free | Paid for write access |
+| **Cost** | Free | Free | Free | Paid tier |
 | **Where files appear** | **A volume in Finder** | Its own window | Its own window | A mounted drive |
 | **Works in every app** | **Yes** — Open/Save dialogs, Preview, terminal | No, copy out first | No, copy out first | Yes |
 | **Transport** | ADB | MTP | MTP | ADB / MTP |
-| **SD card as its own volume** | **Yes**, with its own free space | No | No | No |
+| **SD card as its own volume** | **Yes**, with its own free space | No | No | Not stated |
 | **Runs in the background** | **Yes** — plug in and it mounts | No, launch the app | No, launch the app | Yes |
 
-The row that matters is the second one. Ferry makes your phone a *volume*, so a 4K video
+Rows come from each project's own documentation. The row that matters is the second one. Ferry makes your phone a *volume*, so a 4K video
 opens in your player, a document opens in Word and saves back, and `rsync` works. Tools
 with their own window make you copy a file out, edit it, and copy it back.
 
