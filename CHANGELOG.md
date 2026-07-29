@@ -5,6 +5,26 @@ loosely and [semantic versioning](https://semver.org).
 
 ## Unreleased
 
+## 0.2.1
+
+Fixes a Homebrew install that left Ferry unable to find adb or post its own
+notifications. **Anyone who installed 0.2.0 with Homebrew should upgrade.**
+
+### Fixed
+
+- **Homebrew installs could not find adb or terminal-notifier.** Ferry records where its
+  helpers live when it registers with launchd, since a background agent gets no shell
+  environment. It looked them up on `PATH` — but Homebrew does not run a cask's install
+  step with your `PATH`; it substitutes its own. So nothing was found, and the agent
+  started with only the system directories: no adb server could be started, and
+  notifications fell back to being branded "Script Editor".
+
+  Ferry now asks Homebrew where its programs are rather than trusting `PATH`, and looks
+  again at runtime, so a helper installed *after* Ferry is picked up without reinstalling.
+
+  Only Homebrew installs were affected. `ferry enable` run by hand from a terminal
+  worked, which is why this was not caught before release.
+
 ## 0.2.0
 
 The commands changed. Ferry now explains itself when a phone will not mount.
