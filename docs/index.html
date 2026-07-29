@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ferry — your Android phone, in Finder</title>
+<meta name="description" content="Mount an Android phone on your Mac and browse it in Finder like a USB drive. Free, no cloud, no account.">
+<meta property="og:title" content="Ferry — your Android phone, in Finder">
+<meta property="og:description" content="Mount an Android phone on your Mac and browse it in Finder like a USB drive.">
+<meta property="og:type" content="website">
+<style>
+  :root {
+    --fg: #1d1d1f;
+    --muted: #6e6e73;
+    --line: #d2d2d7;
+    --bg: #fff;
+    --accent: #0071e3;
+    --code-bg: #f5f5f7;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --fg: #f5f5f7; --muted: #a1a1a6; --line: #38383c;
+      --bg: #000; --accent: #2997ff; --code-bg: #1c1c1e;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--fg);
+    font: 17px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+  header { padding: 96px 0 72px; text-align: center; }
+  h1 { font-size: 56px; line-height: 1.07; letter-spacing: -.02em; margin: 0 0 16px; }
+  .tagline { font-size: 24px; color: var(--muted); margin: 0 auto 40px; max-width: 34ch; }
+  .install {
+    display: inline-block; text-align: left; background: var(--code-bg);
+    border-radius: 12px; padding: 20px 24px; font-size: 15px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  }
+  .install div { white-space: nowrap; }
+  .sub { color: var(--muted); font-size: 15px; margin-top: 20px; }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  section { padding: 56px 0; border-top: 1px solid var(--line); }
+  h2 { font-size: 32px; letter-spacing: -.01em; margin: 0 0 28px; }
+  .grid { display: grid; gap: 28px; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+  .grid h3 { font-size: 17px; margin: 0 0 6px; }
+  .grid p { margin: 0; color: var(--muted); font-size: 15px; }
+  table { width: 100%; border-collapse: collapse; font-size: 15px; }
+  th, td { text-align: left; padding: 12px 10px; border-bottom: 1px solid var(--line); }
+  th { font-weight: 600; }
+  td:first-child { color: var(--muted); }
+  .yes { font-weight: 600; }
+  figure { margin: 0 0 32px; }
+  figure img { width: 100%; border-radius: 12px; border: 1px solid var(--line); }
+  figcaption { color: var(--muted); font-size: 14px; margin-top: 10px; text-align: center; }
+  ol { padding-left: 22px; color: var(--muted); }
+  ol strong { color: var(--fg); }
+  footer { padding: 56px 0 80px; color: var(--muted); font-size: 14px; text-align: center; border-top: 1px solid var(--line); }
+  @media (max-width: 600px) {
+    header { padding: 64px 0 48px; }
+    h1 { font-size: 40px; }
+    .tagline { font-size: 20px; }
+    .install { font-size: 13px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="wrap">
+  <h1>Your Android phone,<br>in Finder.</h1>
+  <p class="tagline">Plug it in and it appears as a volume. Like a USB drive.</p>
+  <div class="install">
+    <div>brew tap ramanbanka/ferry</div>
+    <div>brew trust ramanbanka/ferry</div>
+    <div>brew install --cask ferry</div>
+  </div>
+  <p class="sub">
+    Free · macOS 11+ · Apple Silicon ·
+    <a href="https://github.com/ramanbanka/ferry-releases/releases">Direct download</a>
+  </p>
+</header>
+
+<section class="wrap">
+  <h2>It behaves like a drive</h2>
+  <div class="grid">
+    <div><h3>Open files in place</h3><p>Double-click and it opens in whatever app you already use. Nothing is copied first.</p></div>
+    <div><h3>Play video</h3><p>Scrub through a 4K clip straight off the phone.</p></div>
+    <div><h3>Edit and save</h3><p>⌘S writes back to the phone.</p></div>
+    <div><h3>Drag both ways</h3><p>Copy, move, rename, delete. Quick Look works.</p></div>
+    <div><h3>SD cards</h3><p>A memory card gets its own volume, with its own free space.</p></div>
+    <div><h3>Use the terminal</h3><p><code>cp</code>, <code>rsync</code>, <code>find</code>, <code>grep</code> all work.</p></div>
+  </div>
+</section>
+
+<section class="wrap">
+  <h2>Why it's different</h2>
+  <table>
+    <tr><th></th><th>Ferry</th><th>The others</th></tr>
+    <tr><td>Where files appear</td><td class="yes">A volume in Finder</td><td>Their own window</td></tr>
+    <tr><td>Works in every app</td><td class="yes">Yes</td><td>Copy it out first</td></tr>
+    <tr><td>Runs in the background</td><td class="yes">Plug in, it mounts</td><td>Launch the app</td></tr>
+    <tr><td>Cost</td><td class="yes">Free</td><td>Often paid to write</td></tr>
+  </table>
+  <p class="sub">
+    Nothing is uploaded. No cloud, no account, no app on the phone. Just the cable.
+  </p>
+</section>
+
+<section class="wrap">
+  <h2>Setting up your phone</h2>
+  <ol>
+    <li><strong>Settings → About phone</strong> — tap <strong>Build number</strong> seven times</li>
+    <li><strong>Settings → Developer options</strong> — turn on <strong>USB debugging</strong></li>
+    <li>Plug in, unlock, and tap <strong>Allow</strong></li>
+  </ol>
+  <p class="sub">
+    Once only. That prompt is Android asking whether to trust this particular Mac.
+  </p>
+</section>
+
+<footer class="wrap">
+  <a href="https://github.com/ramanbanka/ferry-releases">GitHub</a> ·
+  <a href="https://github.com/ramanbanka/ferry-releases/releases">Releases</a> ·
+  <a href="https://github.com/ramanbanka/ferry-releases/blob/mainline/CHANGELOG.md">Changelog</a> ·
+  <a href="https://github.com/ramanbanka/ferry-releases/issues">Report a bug</a>
+  <br><br>
+  Free to use. Not open source.
+</footer>
+
+</body>
+</html>

@@ -28,7 +28,7 @@ ferry status
 **Log**
 
 ```
-tail -50 ~/Library/Logs/ferry.log
+ferry log -n 50 --no-follow
 ```
 
 <!-- paste the output; if the file is empty or missing, say so -->

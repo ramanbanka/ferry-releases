@@ -21,8 +21,8 @@ sw_vers -productVersion
 **Log**
 
 ```
-tail -50 ~/Library/Logs/ferry.log
+ferry log -n 50 --no-follow
 ```
 
-<!-- For more detail, stop the agent and run it in the foreground:
-     `ferry uninstall && ferry agent -v` -->
+<!-- For more detail, stop Ferry and run it in the foreground:
+     `ferry stop && ferry run -v` -->

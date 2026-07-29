@@ -116,7 +116,7 @@ tar -xzf ferry-*-macos-arm64.tar.gz
 sudo rm -f /usr/local/bin/ferry
 sudo install -m 755 ferry-*-macos-arm64/ferry /usr/local/bin/ferry
 sudo xattr -cr /usr/local/bin/ferry 2>/dev/null || true
-ferry install
+ferry start
 ```
 
 macOS tags anything downloaded in a browser and won't run it until the tag is cleared —
@@ -129,14 +129,19 @@ brew install --cask android-platform-tools
 brew install terminal-notifier
 ```
 
-## More options
+## Using it
 
-Phones mount at `~/Ferry/<PhoneModel>`, and appear in Finder's sidebar.
+Phones mount at `~/Ferry/<PhoneModel>` and appear in Finder's sidebar. Mostly there is
+nothing to do, but:
 
 ```bash
-ferry status        # what's mounted and which phones are connected
-ferry --help        # everything else
+ferry status     # what's mounted and which phones are connected
+ferry log        # follow what Ferry is doing
+ferry restart    # if something seems stuck
+ferry stop       # stop until your next login
 ```
+
+`ferry --help` lists the rest.
 
 ## If something goes wrong
 
