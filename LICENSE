@@ -1,0 +1,43 @@
+Ferry — Licence
+
+Copyright (c) 2026 Raman Banka. All rights reserved.
+
+Ferry is free to use. This licence grants you permission to do so; it does not
+make the software open source.
+
+PERMITTED
+
+You may install and use Ferry on any number of computers you own or control,
+for any purpose, personal or commercial, at no charge. You may redistribute the
+unmodified binary as published, provided this licence is included and no fee is
+charged for it.
+
+NOT PERMITTED
+
+You may not modify, reverse engineer, decompile, or disassemble Ferry, except to
+the extent that applicable law expressly permits despite this restriction. You
+may not sell, rent, sublicense, or bundle Ferry as part of a paid product or
+service. You may not remove or alter this licence or any copyright notice.
+
+NO WARRANTY
+
+Ferry is provided "as is", without warranty of any kind, express or implied,
+including but not limited to the warranties of merchantability, fitness for a
+particular purpose, and non-infringement. In no event shall the copyright holder
+be liable for any claim, damages, or other liability, whether in an action of
+contract, tort, or otherwise, arising from, out of, or in connection with Ferry
+or its use.
+
+Ferry reads and writes files on a connected device. You are responsible for
+keeping your own backups.
+
+THIRD-PARTY COMPONENTS
+
+Ferry is built with open source libraries, each of which remains under its own
+licence. Those licences are not affected by this one.
+
+CHANGES
+
+Future versions may be released under different terms. This licence covers the
+version it is distributed with, and your right to keep using that version is not
+withdrawn by any later change.
