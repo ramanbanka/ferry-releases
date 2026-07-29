@@ -115,12 +115,13 @@ cd ~/Downloads
 tar -xzf ferry-*-macos-arm64.tar.gz
 sudo rm -f /usr/local/bin/ferry
 sudo install -m 755 ferry-*-macos-arm64/ferry /usr/local/bin/ferry
-sudo xattr -cr /usr/local/bin/ferry 2>/dev/null || true
-ferry start
+xattr -d com.apple.quarantine /usr/local/bin/ferry 2>/dev/null || true
+ferry enable
 ```
 
 macOS tags anything downloaded in a browser and won't run it until the tag is cleared —
-that's the `xattr` line.
+that's the `xattr` line. `ferry enable` is what registers the agent; `ferry start` only
+starts one that is already registered, so it will not work on a fresh install.
 
 You also need `adb`, which Homebrew would have installed for you:
 
