@@ -5,6 +5,60 @@ loosely and [semantic versioning](https://semver.org).
 
 ## Unreleased
 
+## 0.2.0
+
+The commands changed. Ferry now explains itself when a phone will not mount.
+
+### Upgrading from 0.1.1
+
+`brew upgrade --cask ferry` does not work from 0.1.1, because the upgrade runs the
+old version's uninstall step and that version does not have the command the cask now
+calls. Remove it first:
+
+```bash
+brew uninstall --cask ferry
+brew install --cask ferry
+```
+
+### Changed
+
+- **New commands.** `install`, `uninstall`, `devices` and `agent` are gone.
+
+  | Was | Now |
+  |---|---|
+  | `ferry install` | `ferry enable` — register with launchd and start |
+  | `ferry uninstall` | `ferry disable` — stop and deregister |
+  | `ferry devices` | `ferry status`, which already listed phones |
+  | `ferry agent` | `ferry run`, and it is no longer advertised |
+
+  New: `ferry start`, `ferry stop` and `ferry restart` act on Ferry now without
+  changing whether it runs at login, and `ferry log` follows the log.
+
+- **`ferry stop` now works.** The launchd job used to restart the agent on any exit,
+  so there was no way to stop it. A deliberate stop is now distinguished from a
+  crash: stopping stays stopped, crashing is still recovered.
+
+### Added
+
+- When a phone cannot be mounted, Ferry says why: USB debugging switched off, the
+  phone not yet allowing this Mac, adb not installed, or the phone not responding.
+  Each explains what to do, and the message closes itself once the problem is
+  resolved or the phone is unplugged.
+
+### Fixed
+
+- Notifications were attributed to "Script Editor" when `terminal-notifier` was
+  installed somewhere unexpected.
+- A phone with a memory card logged every connect and disconnect twice, and named
+  itself by serial number in some messages and by model in others.
+- A phone missing for a single moment — a jostled cable — caused both volumes to
+  unmount and remount, with four notifications.
+- Browsing a folder wrote a log line for every file in it, because Finder reads each
+  one to draw a thumbnail. The log records what Ferry did, not which files were
+  opened.
+- An unplugged phone was logged as an error. It is expected, and Ferry recovers.
+- The log is timestamped. It was not, unless Ferry was run by hand with `-v`.
+
 ## 0.1.1
 
 Fixes data loss on a common path, and reads are faster.
