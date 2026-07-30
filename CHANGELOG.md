@@ -5,6 +5,24 @@ loosely and [semantic versioning](https://semver.org).
 
 ## Unreleased
 
+## 0.3.0
+
+Browsing is faster.
+
+### Changed
+
+- **Photo folders scroll better.** Pause for a moment and the rest of the folder is
+  ready before you reach it — a second screenful that took about 115 ms per photo now
+  takes about 3 ms. Going back to a folder you were in earlier is immediate.
+
+- **Thumbnails load about 25% faster and video plays about 15% faster**, throughout.
+
+### Fixed
+
+- **Watching a video no longer makes the surrounding folder slow again.**
+
+- **Re-reading part of a file no longer costs you previews** you had already loaded.
+
 ## 0.2.1
 
 Fixes a Homebrew install that left Ferry unable to find adb or post its own
