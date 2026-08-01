@@ -3,7 +3,21 @@
 Notable changes, newest first. Follows [Keep a Changelog](https://keepachangelog.com)
 loosely and [semantic versioning](https://semver.org).
 
-## Unreleased
+## 0.4.0
+
+- **Now you have an option to browse your phone over Wi-Fi.** Run `ferry pair` in Terminal
+  once and it appears in Finder whenever it is on the same network as your Mac — no cable,
+  nothing plugged in.
+
+  Note: Wi-Fi can be up to 9x slower than a cable. 4K video played straight from the phone
+  may buffer.
+
+- **Plug in using USB and mounts speed up automatically.** Unplug and they go back to Wi-Fi.
+
+- **`ferry status` says which one you are on.**
+
+- **Long sessions stay tidier.** Connecting and disconnecting repeatedly no longer leaves
+  anything behind.
 
 ## 0.3.0
 

@@ -14,6 +14,9 @@ Plug an Android phone into your Mac with a USB cable and it appears in Finder as
 volume. Drag files in and out, open photos, play videos, edit a document in place.
 A memory card shows up as its own volume next to it.
 
+You also have an option to browse it over Wi-Fi, with no cable at all — see
+[Without a cable](#without-a-cable).
+
 ```bash
 brew tap ramanbanka/ferry
 brew trust ramanbanka/ferry
@@ -42,6 +45,7 @@ phone, it appears; unplug it, it goes away.
 | **SD cards** | A memory card appears as its own volume beside internal storage, with its own free space. |
 | **Multiple phones** | Plug in two, get two sets of volumes, each named after its phone. |
 | **Eject** | The eject button in Finder's sidebar works, and flushes anything still being written. |
+| **No cable** | Pair once and it mounts over Wi-Fi, from anywhere on the network. |
 
 ## How it compares
 
@@ -53,6 +57,7 @@ phone, it appears; unplug it, it goes away.
 | **Transport** | ADB | MTP | MTP | ADB / MTP |
 | **SD card as its own volume** | **Yes**, with its own free space | No | No | Not stated |
 | **Runs in the background** | **Yes** — plug in and it mounts | No, launch the app | No, launch the app | Yes |
+| **Works without a cable** | **Yes**, over Wi-Fi | No | No | Not stated |
 
 Rows come from each project's own documentation. The row that matters is the second one. Ferry makes your phone a *volume*, so a 4K video
 opens in your player, a document opens in Word and saves back, and `rsync` works. Tools
@@ -60,13 +65,14 @@ with their own window make you copy a file out, edit it, and copy it back.
 
 ## Why you might prefer it
 
-**Nothing is copied.** Your data stays on the phone until you choose to copy it.
-Nothing is uploaded, synced, or sent over a network — no cloud, no account.
+**Nothing is copied.** Your data stays on the phone until you choose to copy it. Nothing is
+uploaded, synced, or sent to anyone else — no cloud, no account. Over Wi-Fi it goes between
+your phone and your Mac and nowhere else.
 
-**It's fast.** 25 MB/s reads. 4K video streams and scrubs without stuttering.
+**It's fast.** 25 MB/s reads over USB. 4K video streams and scrubs without stuttering.
 
-**It survives the cable.** Unplug mid-session and nothing hangs. Plug back in and it
-picks up where it was.
+**It survives the cable.** Unplug mid-session and nothing hangs. Plug back in and it picks up
+where it was — and if the phone is paired for Wi-Fi, the volumes stay up without it.
 
 **It gets out of the way.** No window, no dock icon, no menu bar item — just a
 notification when a phone connects.
@@ -75,6 +81,8 @@ notification when a phone connects.
 of your Mac's security. Free to use, with no account and no sign-up.
 
 ## Speed
+
+Over USB. Wi-Fi is slower — see [Without a cable](#without-a-cable).
 
 | | |
 |---|---|
@@ -91,6 +99,8 @@ of your Mac's security. Free to use, with no account and no sign-up.
   1. Settings → About phone → tap **Build number** seven times
   2. Settings → Developer options → **USB debugging** → on
   3. Plug in, unlock the phone, tap **Allow** on the prompt
+- **A USB cable.** For Wi-Fi instead, see [Without a cable](#without-a-cable) — you still
+  need the steps above, plus Android 11 or newer.
 
 ## Install
 
@@ -139,7 +149,8 @@ Phones mount at `~/Ferry/<PhoneModel>` and appear in Finder's sidebar. Mostly th
 nothing to do, but:
 
 ```bash
-ferry status     # what's mounted and which phones are connected
+ferry status     # what's mounted, and over USB or Wi-Fi
+ferry pair       # set the phone up to mount over Wi-Fi, no cable
 ferry log        # follow what Ferry is doing
 ferry restart    # if something seems stuck
 ferry stop       # stop until your next login
@@ -147,14 +158,43 @@ ferry stop       # stop until your next login
 
 `ferry --help` lists the rest.
 
+## Without a cable
+
+You also have an option to browse your phone over Wi-Fi. Pair it once and it appears in
+Finder whenever it is on the same network as your Mac — no cable, nothing plugged in.
+
+**Note: Wi-Fi can be up to 9x slower than a cable. 4K video played straight from the phone
+may buffer.**
+
+On the phone — this needs Android 11 or newer:
+
+1. Settings → Developer options → **Wireless debugging**, and turn it on
+2. Tap the words *Wireless debugging* (not the switch), then **Pair device with pairing code**
+
+Leave that screen open, and on your Mac:
+
+```bash
+ferry pair
+```
+
+Type the six digits the phone shows. That is the whole setup — Ferry finds the phone by
+itself from then on.
+
+Plug in using USB and mounts speed up automatically; unplug and they go back to Wi-Fi.
+
+If the phone stops accepting your Mac, wireless debugging was probably turned off and on
+again, which makes the phone forget it. Run `ferry pair` in Terminal again.
+
 ## If something goes wrong
 
 | Problem | What to do |
 |---|---|
 | Phone doesn't appear in Finder | Unlock it and check for an "Allow USB debugging?" prompt. Then `ferry status`. |
-| `ferry status` shows no phones | Try a different cable — many USB-C cables only carry power. |
+| `ferry status` shows no phones | Try a different cable — many USB-C cables only carry power. Over Wi-Fi, check the phone is awake and on the same network. |
 | Worked before, not now | Another Android transfer app may have taken the connection. Quit it, then `ferry status`. |
-| Transfers feel slow | Use a USB 3 cable and port. A USB 2 cable caps at about 25 MB/s. |
+| Transfers feel slow | Check `ferry status` — over Wi-Fi that is expected, and plugging in speeds it up. On a cable, use USB 3; USB 2 caps at about 25 MB/s. |
+| Video buffers or stutters | Almost certainly Wi-Fi. Plug the cable in and it keeps playing. |
+| Phone won't pair, or stopped accepting this Mac | Wireless debugging was probably turned off and on again. Run `ferry pair` in Terminal again. |
 | "Refusing to load cask … untrusted tap" | Run `brew trust ramanbanka/ferry`, then install again. |
 | `Killed: 9` when running `ferry` | macOS quarantined the download. `xattr -d com.apple.quarantine $(which ferry)`. |
 | Eject did nothing | Something still has a file open. Close it, or unplug the phone. |
