@@ -20,8 +20,8 @@ Wi-Fi fixes. **Anyone using `ferry pair` should upgrade** — see Security.
 ### Added
 
 - `ferry status` shows which version is running.
-- `ferry pair` lists what it found when there is more than one device, and lets
-  you choose.
+- `ferry pair` shows every device it found, with its state and address, and lets
+  you act on the one you choose.
 
 ### Fixed
 
