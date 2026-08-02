@@ -7,14 +7,29 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.4.1] - 2026-08-02
 
-Wi-Fi fixes.
+Wi-Fi fixes. **Anyone using `ferry pair` should upgrade** — see Security.
+
+### Security
+
+- **Ferry could connect to a device on your network that you had never paired
+  with.** `ferry pair` tried every device advertising adb, so another Android
+  device — a TV box, a tablet — could be prompted to allow the connection, and
+  Ferry would then mount its storage. It now only connects to devices paired with
+  this Mac.
 
 ### Added
 
 - `ferry status` shows which version is running.
+- `ferry pair` lists what it found when there is more than one device, and lets
+  you choose.
 
 ### Fixed
 
+- `ferry pair` gave different answers on consecutive runs for an unchanged
+  network, and could name a device it had not acted on.
+- A phone on the network was sometimes reported as not found.
+- A device waiting for you to tap "Allow USB debugging" was disconnected before
+  you could.
 - A phone that has left the network no longer keeps asking to be paired.
 - A Wi-Fi mount no longer tells you to reconnect a cable you do not have.
 - `ferry pair` no longer downgrades a phone that is already paired.
