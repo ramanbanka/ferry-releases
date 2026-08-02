@@ -1,9 +1,30 @@
 # Changelog
 
-Notable changes, newest first. Follows [Keep a Changelog](https://keepachangelog.com)
-loosely and [semantic versioning](https://semver.org).
+All notable changes to Ferry are documented here.
 
-## 0.4.0
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+## [0.4.1] - 2026-08-02
+
+Wi-Fi fixes.
+
+### Added
+
+- `ferry status` shows which version is running.
+
+### Fixed
+
+- A phone that has left the network no longer keeps asking to be paired.
+- A Wi-Fi mount no longer tells you to reconnect a cable you do not have.
+- `ferry pair` no longer downgrades a phone that is already paired.
+- A file could be reported as saved before it reached the phone.
+- Some failures made Finder wait instead of showing an error.
+- A mount that fails no longer leaves an empty folder in `~/Ferry`.
+
+## [0.4.0] - 2026-08-01
+
+### Added
 
 - **Now you have an option to browse your phone over Wi-Fi.** Run `ferry pair` in Terminal
   once and it appears in Finder whenever it is on the same network as your Mac — no cable,
@@ -16,10 +37,12 @@ loosely and [semantic versioning](https://semver.org).
 
 - **`ferry status` says which one you are on.**
 
+### Fixed
+
 - **Long sessions stay tidier.** Connecting and disconnecting repeatedly no longer leaves
   anything behind.
 
-## 0.3.0
+## [0.3.0] - 2026-07-30
 
 Browsing is faster.
 
@@ -37,7 +60,7 @@ Browsing is faster.
 
 - **Re-reading part of a file no longer costs you previews** you had already loaded.
 
-## 0.2.1
+## [0.2.1] - 2026-07-29
 
 Fixes a Homebrew install that left Ferry unable to find adb or post its own
 notifications. **Anyone who installed 0.2.0 with Homebrew should upgrade.**
@@ -57,7 +80,7 @@ notifications. **Anyone who installed 0.2.0 with Homebrew should upgrade.**
   Only Homebrew installs were affected. `ferry enable` run by hand from a terminal
   worked, which is why this was not caught before release.
 
-## 0.2.0
+## [0.2.0] - 2026-07-29
 
 The commands changed. Ferry now explains itself when a phone will not mount.
 
@@ -71,6 +94,13 @@ calls. Remove it first:
 brew uninstall --cask ferry
 brew install --cask ferry
 ```
+
+### Added
+
+- When a phone cannot be mounted, Ferry says why: USB debugging switched off, the
+  phone not yet allowing this Mac, adb not installed, or the phone not responding.
+  Each explains what to do, and the message closes itself once the problem is
+  resolved or the phone is unplugged.
 
 ### Changed
 
@@ -90,13 +120,6 @@ brew install --cask ferry
   so there was no way to stop it. A deliberate stop is now distinguished from a
   crash: stopping stays stopped, crashing is still recovered.
 
-### Added
-
-- When a phone cannot be mounted, Ferry says why: USB debugging switched off, the
-  phone not yet allowing this Mac, adb not installed, or the phone not responding.
-  Each explains what to do, and the message closes itself once the problem is
-  resolved or the phone is unplugged.
-
 ### Fixed
 
 - Notifications were attributed to "Script Editor" when `terminal-notifier` was
@@ -111,9 +134,17 @@ brew install --cask ferry
 - An unplugged phone was logged as an error. It is expected, and Ferry recovers.
 - The log is timestamped. It was not, unless Ferry was run by hand with `-v`.
 
-## 0.1.1
+## [0.1.1] - 2026-07-29
 
 Fixes data loss on a common path, and reads are faster.
+
+### Changed
+
+- Reads are about 17% faster — 21 to 25 MB/s on the phone this was measured against.
+  Two concurrency limits were set below what the transport sustains.
+- Mount directories use underscores rather than spaces, so paths can be typed in a
+  terminal without quoting: `~/Ferry/SM_G781B_SD_card`. Notifications and Finder's
+  sidebar are unchanged.
 
 ### Fixed
 
@@ -131,23 +162,7 @@ Fixes data loss on a common path, and reads are faster.
 - A phone that cannot be mounted now says so, once, instead of retrying silently
   forever while nothing appears in Finder.
 
-### Changed
-
-- Reads are about 17% faster — 21 to 25 MB/s on the phone this was measured against.
-  Two concurrency limits were set below what the transport sustains.
-- Mount directories use underscores rather than spaces, so paths can be typed in a
-  terminal without quoting: `~/Ferry/SM_G781B_SD_card`. Notifications and Finder's
-  sidebar are unchanged.
-
-### Internal
-
-- The conformance suite covers the write path — WRITE, CREATE, MKDIR, REMOVE, RMDIR,
-  RENAME and COMMIT had no automated coverage, and the RENAME data loss above was
-  found by adding it. 31 checks, up from 18.
-- A read-throughput floor, since the speed regression above went unnoticed for want of
-  anything measuring it.
-
-## 0.1.0
+## 0.1.0 - 2026-07-28
 
 First release.
 
@@ -164,3 +179,11 @@ First release.
 - Finder's eject button works and flushes pending writes.
 - Installs with `brew install --cask ferry`, which pulls in dependencies and starts
   the agent.
+
+
+[0.4.1]: https://github.com/ramanbanka/ferry-releases/compare/v0.4.0...v0.4.1
+[0.4.0]: https://github.com/ramanbanka/ferry-releases/compare/v0.3.0...v0.4.0
+[0.3.0]: https://github.com/ramanbanka/ferry-releases/compare/v0.2.1...v0.3.0
+[0.2.1]: https://github.com/ramanbanka/ferry-releases/compare/v0.2.0...v0.2.1
+[0.2.0]: https://github.com/ramanbanka/ferry-releases/compare/v0.1.1...v0.2.0
+[0.1.1]: https://github.com/ramanbanka/ferry-releases/releases/tag/v0.1.1
