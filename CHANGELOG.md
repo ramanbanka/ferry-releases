@@ -5,37 +5,43 @@ All notable changes to Ferry are documented here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [0.4.1] - 2026-08-02
+## [0.5.0] - 2026-10-30
 
-Wi-Fi fixes. **Anyone using `ferry pair` should upgrade** — see Security.
+Faster, smoother, and wireless made easy.
 
 ### Security
 
-- **Ferry could connect to a device on your network that you had never paired
-  with.** `ferry pair` tried every device advertising adb, so another Android
-  device — a TV box, a tablet — could be prompted to allow the connection, and
-  Ferry would then mount its storage. It now only connects to devices paired with
-  this Mac.
+- Ferry connects only to your own phones, never to other devices on your
+  network.
 
 ### Added
 
+- **Wi-Fi with no pairing** for any phone you've used on the cable. Just turn on
+  Wireless debugging.
+- **Pair by QR code.** Run `ferry pair` and scan the code with your phone.
+- **Cable and Wi-Fi, without a hiccup.** Unplug the phone and it carries on over
+  Wi-Fi, even in the middle of a copy. Plug it back in and it moves to the cable.
+- Drives are named after your phone.
+- A new icon and a tidier "connected" notification.
 - `ferry status` shows which version is running.
-- `ferry pair` shows every device it found, with its state and address, and lets
-  you act on the one you choose.
+
+### Changed
+
+- **Large copies are much faster**, with no more "Server connections
+  interrupted" windows.
+- Thumbnails load faster.
+- Apps that lock files, like some editors, can now save to the phone.
+- Your phone stays in Finder when the Mac wakes from sleep.
+- Your phone's name stays private to your Mac.
 
 ### Fixed
 
-- `ferry pair` gave different answers on consecutive runs for an unchanged
-  network, and could name a device it had not acted on.
-- A phone on the network was sometimes reported as not found.
-- A device waiting for you to tap "Allow USB debugging" was disconnected before
-  you could.
-- A phone that has left the network no longer keeps asking to be paired.
-- A Wi-Fi mount no longer tells you to reconnect a cable you do not have.
-- `ferry pair` no longer downgrades a phone that is already paired.
-- A file could be reported as saved before it reached the phone.
-- Some failures made Finder wait instead of showing an error.
-- A mount that fails no longer leaves an empty folder in `~/Ferry`.
+- Files are never left half-saved if a copy is interrupted.
+- Wi-Fi pairing and reconnecting are more reliable.
+- Very large files show the right size.
+- Ferry no longer freezes when a phone leaves Wi-Fi.
+- Copying with `cp` no longer prints warnings.
+- Small fixes to `ferry status`.
 
 ## [0.4.0] - 2026-08-01
 
@@ -196,7 +202,7 @@ First release.
   the agent.
 
 
-[0.4.1]: https://github.com/ramanbanka/ferry-releases/compare/v0.4.0...v0.4.1
+[0.5.0]: https://github.com/ramanbanka/ferry-releases/compare/v0.4.0...v0.5.0
 [0.4.0]: https://github.com/ramanbanka/ferry-releases/compare/v0.3.0...v0.4.0
 [0.3.0]: https://github.com/ramanbanka/ferry-releases/compare/v0.2.1...v0.3.0
 [0.2.1]: https://github.com/ramanbanka/ferry-releases/compare/v0.2.0...v0.2.1
