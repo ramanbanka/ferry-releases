@@ -12,9 +12,7 @@ Browse photos, watch videos, and drag files both ways. No app to open, nothing t
 Ferry just works in the background.
 
 ```bash
-brew tap ramanbanka/ferry
-brew trust ramanbanka/ferry
-brew install --cask ferry
+brew install --cask ramanbanka/ferry/ferry
 ```
 
 More at **[ramanbanka.github.io/ferry](https://ramanbanka.github.io/ferry/)**.
@@ -46,9 +44,7 @@ More at **[ramanbanka.github.io/ferry](https://ramanbanka.github.io/ferry/)**.
 ### With Homebrew (recommended)
 
 ```bash
-brew tap ramanbanka/ferry
-brew trust ramanbanka/ferry
-brew install --cask ferry
+brew install --cask ramanbanka/ferry/ferry
 ```
 
 Then plug in the phone, unlock it, and tap **Allow** on "Allow USB debugging?". It appears in
@@ -111,7 +107,7 @@ ferry disable    # stop, and don't start at login
 | It worked before, not now | Another Android transfer app may have taken the phone. Quit it. |
 | The phone stopped accepting this Mac over Wi-Fi | Plug in the cable once and tap **Allow**, or run `ferry pair` again. |
 | Eject does nothing | Something still has a file open. Close it, or unplug the phone. |
-| "Refusing to load cask … untrusted tap" | Run `brew trust ramanbanka/ferry`, then install again. |
+| "Refusing to load cask … untrusted tap" | Install with the full name: `brew install --cask ramanbanka/ferry/ferry`. |
 | `Killed: 9` when running `ferry` | Run `xattr -d com.apple.quarantine $(which ferry)`. |
 
 Found a bug? [Open an issue](../../issues) with your phone's model and the output of
